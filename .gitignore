@@ -1,0 +1,7 @@
+bin/
+obj/
+expenses.xml
+incomes.xml
+users.xml
+personalBudget.depend
+personalBudget.layout
