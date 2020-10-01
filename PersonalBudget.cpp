@@ -141,6 +141,16 @@ void PersonalBudget::displayBalanceSheetForTheCurrentMonth()
                 incomesToDisplay.erase(itr);
             }
         }
+
+        if(incomesToDisplay.empty())
+        {
+            cout << "No incomes to display" << endl;
+            sumOfIncomes = 0;
+        }
+        else
+        {
+            //wysłanie incomesToDisplay do funkcji sortującej
+        }
     }
 
     cout << "Rozmiar incomesToDisplay: " << incomesToDisplay.size() << endl;
@@ -149,6 +159,6 @@ void PersonalBudget::displayBalanceSheetForTheCurrentMonth()
     system("pause");
 
     /*
-    1. Posegreguj incomes i expenses tak, aby na g�rze by�y najstarsze (najmniejsze).
+    1. Posegreguj incomes i expenses tak, aby na górze by³y najstarsze (najmniejsze).
     */
 }
