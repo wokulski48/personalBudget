@@ -45,6 +45,13 @@ vector <Expense> FileWithExpenses::loadExpensesFromFile()
             }
             else
             {
+                xml.FindElem("EXPENSEID");
+                expense.setId(atoi(MCD_2PCSZ(xml.GetData())));
+
+                if(expense.getId() > lastExpenseId)
+                {
+                    lastExpenseId = expense.getId();
+                }
                 xml.OutOfElem();
             }
         }

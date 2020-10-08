@@ -45,6 +45,13 @@ vector <Income> FileWithIncomes::loadIncomesFromFile()
             }
             else
             {
+                xml.FindElem("INCOMEID");
+                income.setId(atoi(MCD_2PCSZ(xml.GetData())));
+
+                if(income.getId() > lastIncomeId)
+                {
+                    lastIncomeId = income.getId();
+                }
                 xml.OutOfElem();
             }
         }
