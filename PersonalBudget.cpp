@@ -150,11 +150,21 @@ void PersonalBudget::displayBalanceSheetForTheCurrentMonth()
         else
         {
             //wysłanie incomesToDisplay do funkcji sortującej
+            incomesToDisplay = AuxiliaryMethods::sortTurnoversInAscendingOrder(incomesToDisplay);
+
+            vector<Income>::iterator endOfVector = incomesToDisplay.end();
+            for(vector<Income>::iterator itr = incomesToDisplay.begin(); itr !=endOfVector; ++itr)
+            {
+                //cout << itr->getIncomeId() << endl;
+                //cout << itr->getUserId() << endl;
+                cout << itr->getDate() << endl;
+                //cout << itr->getItem() << endl;
+                //cout << itr->getAmount();
+            }
+
+            system("pause");
         }
     }
-
-    cout << "Rozmiar incomesToDisplay: " << incomesToDisplay.size() << endl;
-    cout << sumOfIncomes;
 
     system("pause");
 

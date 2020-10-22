@@ -301,13 +301,9 @@ float AuxiliaryMethods::enterAmount()
     return round(amount*100)/100;
 }
 
-/*
-int AuxiliaryMethods::convertDateAsStringToDateAsInt(string dateAsString)
+vector <Turnover> AuxiliaryMethods::sortTurnoversInAscendingOrder(vector <Turnover> turnovers)
 {
-    int dateAsInt = 0;
+    sort(turnovers.begin(), turnovers.end(), less_than_dateAsInt());
 
-    dateAsInt = atoi((dateAsString.substr(0,4) + dateAsString.substr(5,2) + dateAsString.substr(8,2)).c_str());
-
-    return dateAsInt;
+    return turnovers;
 }
-*/

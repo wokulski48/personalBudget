@@ -6,6 +6,7 @@
 #include "AuxiliaryMethods.h"
 #include "IncomeManager.h"
 #include "ExpenseManager.h"
+#include "Turnover.h"
 
 using namespace std;
 

@@ -14,6 +14,7 @@
 #include <string>
 #include <vector>
 #include "Markup.h"
+#include "Income.h"
 
 using namespace std;
 
@@ -27,6 +28,14 @@ class AuxiliaryMethods
     static int lastDayOfMonth(int year, int month);
     static bool checkIfYearIsBissextile(int year);
     */
+    struct less_than_dateAsInt
+    {
+        inline bool operator() (/*const*/ Turnover& turnover1, /*const*/ Turnover& turnover2)
+        {
+            return (turnover1.getDateAsInt() < turnover2.getDateAsInt());
+        }
+    };
+
 public:
     static char enterCharacter();
     static char enterYesOrNo();
@@ -36,6 +45,7 @@ public:
     //static string enterDate();
     static float enterAmount();
     //static int convertDateAsStringToDateAsInt(string dateAsString);
+    static vector <Turnover> sortTurnoversInAscendingOrder(vector <Turnover> turnovers);
 };
 
 #endif
