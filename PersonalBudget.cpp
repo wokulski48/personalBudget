@@ -20,6 +20,7 @@ void PersonalBudget::mainMenuOfProgram()
             {
                 incomeManager = new IncomeManager(NAME_OF_FILE_WITH_INCOMES, userManager.getLoggedInUserId());
                 expenseManager = new ExpenseManager(NAME_OF_FILE_WITH_EXPENSES, userManager.getLoggedInUserId());
+                balanceManager = new BalanceManager();
 
                 do
                 {
@@ -34,7 +35,7 @@ void PersonalBudget::mainMenuOfProgram()
                         expenseManager->addExpense(userManager.getLoggedInUserId());
                         break;
                     case '3':
-                        displayBalanceSheetForTheCurrentMonth();
+                        balanceManager->displayBalanceSheetForTheCurrentMonth(incomeManager->getIncomes(), expenseManager->getExpenses());
                         break;
                     case '4':
 
@@ -106,69 +107,4 @@ char PersonalBudget::chooseUserMenuOption()
     choice = AuxiliaryMethods::enterCharacter();
 
     return choice;
-}
-
-void PersonalBudget::displayBalanceSheetForTheCurrentMonth()
-{
-    vector <Income> incomesToDisplay;
-    vector <Expense> expensesToDisplay;
-    int firstDateOfCurrentMonthAsInt, lastDateOfCurrentMonthAsInt = 0;
-    float sumOfIncomes, sumOfExpenses, differenceBetweenIncomesAndExpenses = 0;
-
-    incomesToDisplay = incomeManager->getIncomes();
-    expensesToDisplay = expenseManager->getExpenses();
-
-    firstDateOfCurrentMonthAsInt = DateOperationMethods::convertDateAsStringToDateAsInt(DateOperationMethods::getFirstDateOfCurrentMonth());
-    lastDateOfCurrentMonthAsInt = DateOperationMethods::convertDateAsStringToDateAsInt(DateOperationMethods::getLastDateOfCurrentMonth());
-
-    if(incomesToDisplay.empty())
-    {
-        cout << "No incomes to display" << endl;
-        sumOfIncomes = 0;
-    }
-    else
-    {
-        vector<Income>::iterator beginItr = incomesToDisplay.begin();
-
-        for(vector<Income>::iterator itr = incomesToDisplay.end()-1; itr >= beginItr; --itr)
-        {
-            if(itr->getDateAsInt() >= firstDateOfCurrentMonthAsInt && itr->getDateAsInt() <= lastDateOfCurrentMonthAsInt)
-            {
-                sumOfIncomes = sumOfIncomes + itr->getAmount();
-            }
-            else
-            {
-                incomesToDisplay.erase(itr);
-            }
-        }
-
-        if(incomesToDisplay.empty())
-        {
-            cout << "No incomes to display" << endl;
-            sumOfIncomes = 0;
-        }
-        else
-        {
-            //wysłanie incomesToDisplay do funkcji sortującej
-            incomesToDisplay = AuxiliaryMethods::sortTurnoversInAscendingOrder(incomesToDisplay);
-
-            vector<Income>::iterator endOfVector = incomesToDisplay.end();
-            for(vector<Income>::iterator itr = incomesToDisplay.begin(); itr !=endOfVector; ++itr)
-            {
-                //cout << itr->getIncomeId() << endl;
-                //cout << itr->getUserId() << endl;
-                cout << itr->getDate() << endl;
-                //cout << itr->getItem() << endl;
-                //cout << itr->getAmount();
-            }
-
-            system("pause");
-        }
-    }
-
-    system("pause");
-
-    /*
-    1. Posegreguj incomes i expenses tak, aby na górze by³y najstarsze (najmniejsze).
-    */
 }

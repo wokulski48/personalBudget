@@ -301,9 +301,4 @@ float AuxiliaryMethods::enterAmount()
     return round(amount*100)/100;
 }
 
-vector <Turnover> AuxiliaryMethods::sortTurnoversInAscendingOrder(vector <Turnover> turnovers)
-{
-    sort(turnovers.begin(), turnovers.end(), less_than_dateAsInt());
 
-    return turnovers;
-}

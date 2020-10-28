@@ -7,6 +7,7 @@
 #include "IncomeManager.h"
 #include "ExpenseManager.h"
 #include "Turnover.h"
+#include "BalanceManager.h"
 
 using namespace std;
 
@@ -15,6 +16,7 @@ class PersonalBudget
     UserManager userManager;
     IncomeManager *incomeManager;
     ExpenseManager *expenseManager;
+    BalanceManager *balanceManager;
     const string NAME_OF_FILE_WITH_INCOMES;
     const string NAME_OF_FILE_WITH_EXPENSES;
 
@@ -27,6 +29,7 @@ public:
     {
         incomeManager = NULL;
         expenseManager = NULL;
+        balanceManager = NULL;
     };
     ~PersonalBudget()
     {
@@ -34,9 +37,10 @@ public:
         incomeManager = NULL;
         delete expenseManager;
         expenseManager = NULL;
+        delete balanceManager;
+        balanceManager = NULL;
     }
     void mainMenuOfProgram();
-    void displayBalanceSheetForTheCurrentMonth();
 };
 
 #endif

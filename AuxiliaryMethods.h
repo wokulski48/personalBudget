@@ -28,13 +28,7 @@ class AuxiliaryMethods
     static int lastDayOfMonth(int year, int month);
     static bool checkIfYearIsBissextile(int year);
     */
-    struct less_than_dateAsInt
-    {
-        inline bool operator() (/*const*/ Turnover& turnover1, /*const*/ Turnover& turnover2)
-        {
-            return (turnover1.getDateAsInt() < turnover2.getDateAsInt());
-        }
-    };
+
 
 public:
     static char enterCharacter();
@@ -45,7 +39,7 @@ public:
     //static string enterDate();
     static float enterAmount();
     //static int convertDateAsStringToDateAsInt(string dateAsString);
-    static vector <Turnover> sortTurnoversInAscendingOrder(vector <Turnover> turnovers);
+
 };
 
 #endif
