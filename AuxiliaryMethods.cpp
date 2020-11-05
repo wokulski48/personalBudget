@@ -80,6 +80,13 @@ string AuxiliaryMethods::convertIntToStr(int Int)
     return ss.str();
 }
 
+string AuxiliaryMethods::convertFloToStr(float Flo)
+{
+    stringstream stream;
+    stream << Flo;
+    return stream.str();
+}
+
 /*
 string AuxiliaryMethods::enterDate()
 {

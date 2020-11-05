@@ -19,6 +19,7 @@ public:
     FileWithUsers(string NAMEOFFILEWITHUSERS) : nameOfFileWithUsers(NAMEOFFILEWITHUSERS) {};
     vector <User> loadUsersFromFile();
     void writeUserToFile(User user);
+    void writeChangedUserPasswordToFile(int loggedInUserId, string newPassword);
 };
 
 #endif

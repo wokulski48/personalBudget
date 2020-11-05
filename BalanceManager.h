@@ -22,6 +22,8 @@ class BalanceManager
     void displayBalanceHeaderForExpenses();
 public:
     void displayBalanceSheetForTheCurrentMonth(vector <Income> incomesToDisplay, vector <Expense> expensesToDisplay);
+    void displayBalanceSheetForThePreviousMonth(vector <Income> incomesToDisplay, vector <Expense> expensesToDisplay);
+    void displayBalanceSheetForTheSelectedPeriod(vector <Income> incomesToDisplay, vector <Expense> expensesToDisplay);
 };
 
 #endif

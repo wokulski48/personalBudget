@@ -108,3 +108,32 @@ void UserManager::userLoggingOut()
     cout << endl << "You have been logged out successfully." << endl << endl;
     system("pause");
 }
+
+void UserManager::changeUserPassword()
+{
+    string newPassword = "";
+
+    system("cls");
+    cout << "    >>> CHANGE USER PASSWORD <<<" << endl;
+    cout << "---------------------------" << endl;
+
+    cout << "Enter a new user password: ";
+    newPassword = AuxiliaryMethods::enterLine();
+
+    vector <User>::iterator itr = users.begin();
+    while (itr != users.end())
+    {
+        if (itr->getUserId() == getLoggedInUserId())
+        {
+            itr->setPassword(newPassword);
+            break;
+        }
+        itr++;
+    }
+
+    fileWithUsers.writeChangedUserPasswordToFile(getLoggedInUserId(), newPassword);
+
+    cout << endl << "The user password has been changed successfully" << endl << endl;
+
+    system("pause");
+}

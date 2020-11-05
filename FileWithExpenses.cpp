@@ -92,7 +92,7 @@ void FileWithExpenses::writeExpenseToFile(Expense expense)
         xml.AddElem("EXPENSEID", expense.getId());
         xml.AddElem("DATE", expense.getDate());
         xml.AddElem("ITEM", expense.getItem());
-        xml.AddElem("AMOUNT", expense.getAmount());
+        xml.AddElem("AMOUNT", AuxiliaryMethods::convertFloToStr(expense.getAmount()));
 
         xml.Save(nameOfFileWithExpenses.c_str());
 
@@ -115,7 +115,7 @@ void FileWithExpenses::writeExpenseToFile(Expense expense)
         xml.AddElem("EXPENSEID", expense.getId());
         xml.AddElem("DATE", expense.getDate());
         xml.AddElem("ITEM", expense.getItem());
-        xml.AddElem("AMOUNT", expense.getAmount());
+        xml.AddElem("AMOUNT", AuxiliaryMethods::convertFloToStr(expense.getAmount()));
 
         xml.Save(nameOfFileWithExpenses.c_str());
     }

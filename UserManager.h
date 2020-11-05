@@ -28,6 +28,7 @@ public:
     void userRegistration();
     void userLoggingIn();
     void userLoggingOut();
+    void changeUserPassword();
 };
 
 #endif

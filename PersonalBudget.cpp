@@ -38,13 +38,13 @@ void PersonalBudget::mainMenuOfProgram()
                         balanceManager->displayBalanceSheetForTheCurrentMonth(incomeManager->getIncomes(), expenseManager->getExpenses());
                         break;
                     case '4':
-
+                        balanceManager->displayBalanceSheetForThePreviousMonth(incomeManager->getIncomes(), expenseManager->getExpenses());
                         break;
                     case '5':
-
+                        balanceManager->displayBalanceSheetForTheSelectedPeriod(incomeManager->getIncomes(), expenseManager->getExpenses());
                         break;
                     case '6':
-
+                        userManager.changeUserPassword();
                         break;
                     case '7':
                         userManager.userLoggingOut();
@@ -100,7 +100,7 @@ char PersonalBudget::chooseUserMenuOption()
     cout << "3. Balance sheet for the current month" << endl;
     cout << "4. Balance sheet for the previous month" << endl;
     cout << "5. Balance sheet for the selected period" << endl;
-    cout << "6. Change password" << endl;
+    cout << "6. Change user password" << endl;
     cout << "7. Log out" << endl;
     cout << "---------------------------" << endl;
 

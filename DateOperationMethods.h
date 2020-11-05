@@ -37,6 +37,8 @@ public:
     static int convertDateAsStringToDateAsInt(string dateAsString);
     static string getFirstDateOfCurrentMonth();
     static string getLastDateOfCurrentMonth();
+    static string getFirstDateOfPreviousMonth();
+    static string getLastDateOfPreviousMonth();
 };
 
 #endif

@@ -83,3 +83,37 @@ void FileWithUsers::writeUserToFile(User user)
         xml.Save("users.xml");
     }
 }
+
+void FileWithUsers::writeChangedUserPasswordToFile(int loggedInUserId, string newPassword)
+{
+    CMarkup xml;
+    int currentUserId = 0;
+
+    bool successfulLoad = xml.Load(nameOfFileWithUsers.c_str());
+
+    if(successfulLoad == true)
+    {
+        xml.ResetPos();
+
+        xml.FindElem(); // root USERS element
+        xml.IntoElem(); // inside USERS
+
+        while(xml.FindElem("USER"))
+        {
+            xml.IntoElem();
+            xml.FindElem("USERID");
+
+            currentUserId = atoi(MCD_2PCSZ(xml.GetData()));
+
+            if(currentUserId == loggedInUserId)
+            {
+                xml.FindElem("PASSWORD");
+                xml.SetData(newPassword);
+                xml.Save(nameOfFileWithUsers.c_str());
+                break;
+            }
+
+            xml.OutOfElem();
+        }
+    }
+}

@@ -93,7 +93,7 @@ string DateOperationMethods::enterDate()
 
     while(true)
     {
-        cout << "Enter the date in the following format [yyyy-mm-dd]: ";
+        cout << '\t' << "Enter the date in the following format [yyyy-mm-dd]: ";
 
         getline(cin, date);
 
@@ -108,7 +108,7 @@ string DateOperationMethods::enterDate()
                 break;
             }
         }
-        cout << "This input is not allowed/correct here. Retype your input." << endl;
+        cout << '\t' << "This input is not allowed/correct here. Retype your input." << endl;
     }
 
     return date;
@@ -338,4 +338,56 @@ string DateOperationMethods::getLastDateOfCurrentMonth()
                              AuxiliaryMethods::convertIntToStr(lastDayOfMonth(getCurrentYear(), getCurrentMonth()));
 
     return lastDateOfCurrentMonth;
+}
+
+string DateOperationMethods::getFirstDateOfPreviousMonth()
+{
+    string firstDateOfPreviousMonth, yearOfPreviousMonth, monthOfPreviousMonth, zeroPrefixInMonth = "";
+
+    if(getCurrentMonth() == 1)
+    {
+        yearOfPreviousMonth = AuxiliaryMethods::convertIntToStr(getCurrentYear() - 1);
+        monthOfPreviousMonth = AuxiliaryMethods::convertIntToStr(12);
+    }
+    else
+    {
+        yearOfPreviousMonth = AuxiliaryMethods::convertIntToStr(getCurrentYear());
+        monthOfPreviousMonth = AuxiliaryMethods::convertIntToStr(getCurrentMonth() - 1);
+    }
+
+    if(atoi(monthOfPreviousMonth.c_str()) < 10)
+    {
+        zeroPrefixInMonth = "0";
+    }
+
+    firstDateOfPreviousMonth = yearOfPreviousMonth + "-" + zeroPrefixInMonth + monthOfPreviousMonth + "-" + "01";
+
+    return firstDateOfPreviousMonth;
+}
+
+string DateOperationMethods::getLastDateOfPreviousMonth()
+{
+    string lastDateOfPreviousMonth, yearOfPreviousMonth, monthOfPreviousMonth, dayOfPreviousMonth, zeroPrefixInMonth = "";
+
+    if(getCurrentMonth() == 1)
+    {
+        yearOfPreviousMonth = AuxiliaryMethods::convertIntToStr(getCurrentYear() - 1);
+        monthOfPreviousMonth = AuxiliaryMethods::convertIntToStr(12);
+    }
+    else
+    {
+        yearOfPreviousMonth = AuxiliaryMethods::convertIntToStr(getCurrentYear());
+        monthOfPreviousMonth = AuxiliaryMethods::convertIntToStr(getCurrentMonth() - 1);
+    }
+
+    if(atoi(monthOfPreviousMonth.c_str()) < 10)
+    {
+        zeroPrefixInMonth = "0";
+    }
+
+    dayOfPreviousMonth = AuxiliaryMethods::convertIntToStr(lastDayOfMonth(atoi(yearOfPreviousMonth.c_str()), atoi(monthOfPreviousMonth.c_str())));
+
+    lastDateOfPreviousMonth = yearOfPreviousMonth + "-" + zeroPrefixInMonth + monthOfPreviousMonth + "-" + dayOfPreviousMonth;
+
+    return lastDateOfPreviousMonth;
 }

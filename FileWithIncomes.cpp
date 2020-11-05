@@ -97,7 +97,7 @@ void FileWithIncomes::writeIncomeToFile(Income income)
         xml.AddElem("INCOMEID", income.getId());
         xml.AddElem("DATE", income.getDate());
         xml.AddElem("ITEM", income.getItem());
-        xml.AddElem("AMOUNT", income.getAmount());
+        xml.AddElem("AMOUNT", AuxiliaryMethods::convertFloToStr(income.getAmount()));
 
         xml.Save(nameOfFileWithIncomes.c_str());
 
@@ -120,7 +120,7 @@ void FileWithIncomes::writeIncomeToFile(Income income)
         xml.AddElem("INCOMEID", income.getId());
         xml.AddElem("DATE", income.getDate());
         xml.AddElem("ITEM", income.getItem());
-        xml.AddElem("AMOUNT", income.getAmount());
+        xml.AddElem("AMOUNT", AuxiliaryMethods::convertFloToStr(income.getAmount()));
 
         xml.Save(nameOfFileWithIncomes.c_str());
     }

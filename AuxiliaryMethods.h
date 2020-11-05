@@ -39,7 +39,7 @@ public:
     //static string enterDate();
     static float enterAmount();
     //static int convertDateAsStringToDateAsInt(string dateAsString);
-
+    static string convertFloToStr(float Flo);
 };
 
 #endif
